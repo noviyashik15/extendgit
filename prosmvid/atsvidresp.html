@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Andrey"> <meta name="Copyright" content="GAA">
+	<title>Просмотр видео</title>
+	<link rel="stylesheet" href="atsvidresp.css">
+	<link rel="stylesheet" href="kalendcan.css">
+	<link rel="icon" type="Images/x-icon" href="../favicon/atsicong_red.ico"/>
+</head>
+<body>
+<h3 class="heading">Выберите видео для просмотра</h3>
+
+<div class="container">
+<div class="main-video">
+<div class="video">
+	<video controls width="640" height="480" src="../video/video4.mp4" type="video/mp4" autoplay muted loop></video>
+    <p class="title">АТС заставка</p>
+</div>
+</div>
+
+<div class="video-list">
+
+<div class="vid active">
+	<video src="../video/video3.mp4" type="video/mp4" autoplay muted loop></video>
+    <p class="title">Космос 1</p>
+</div>
+<div class="vid">
+	<video src="../video/video4.mp4" type="video/mp4" autoplay muted loop></video>
+    <p class="title">Космос 2</p>
+</div>
+<div class="vid">
+	<video src="../effects/atsvideo1.mp4" type="video/mp4" autoplay muted loop></video>
+    <p class="title">АТС заставка</p>
+</div>
+<div class="vid">
+	<video src="../video/vzvneba.mp4" type="video/mp4" autoplay muted loop></video>
+    <p class="title">Космос 3</p>
+</div>
+
+</div>
+</div>
+<!--  <video controls width="640" height="480" src="atsvideo1.mp4" type="video/mp4" autoplay muted loop></video>  -->
+  <canvas id="canvas-basic"></canvas>
+  <script src="granim.min.js"></script>
+  <script src="granimjs.js"></script>
+
+<script>
+	let listVideo = document.querySelectorAll('.video-list .vid');
+	let mainVideo = document.querySelector('.main-video video');
+	let title = document.querySelector('.main-video .title');
+listVideo.forEach(video =>{
+    video.onclick = () =>{
+		listVideo.forEach(vid => vid.classList.remove('active'));
+		video.classList.add('active');
+		if(video.classList.contains('active')){
+			let src = video.children[0].getAttribute('src');
+			mainVideo.src = src;
+			let text = video.children[1].innerHTML;
+			title.innerHTML	= text;
+		};
+	};
+});
+</script>
+
+</body>
+</html>
